@@ -28,7 +28,7 @@ export default function Home() {
           <iframe
             width="560"
             height="315"
-            src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1`}
+            src={`https://www.youtube.com/embed/${VIDEO_ID}`}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -36,7 +36,21 @@ export default function Home() {
             className={styles.iframe}
           />
         ) : (
-          <YouTubePlaceholder videoId={VIDEO_ID} onLoad={() => setLoaded(true)} />
+          <>
+            <YouTubePlaceholder videoId={VIDEO_ID} onLoad={() => setLoaded(true)} />
+            <noscript>
+              <iframe
+                width="560"
+                height="315"
+                src={`https://www.youtube.com/embed/${VIDEO_ID}`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className={styles.iframe}
+              />
+            </noscript>
+          </>
         )}
       </div>
     </main>
